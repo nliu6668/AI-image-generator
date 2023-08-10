@@ -1,11 +1,9 @@
 import type { AppProps } from 'next/app';
 import "./App.css";
-import Image from 'next/image';
+import './App.scss';
 import { Configuration, OpenAIApi } from 'openai';
 import getConfig from 'next/config';
 import {useState, useEffect} from 'react';
-import { Stars } from '@mui/icons-material';
-import { ClassNames } from '@emotion/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [result, setResult] = useState("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png");
