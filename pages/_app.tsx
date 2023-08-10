@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { Configuration, OpenAIApi } from 'openai';
 import getConfig from 'next/config';
 import {useState, useEffect} from 'react';
+import { Stars } from '@mui/icons-material';
+import { ClassNames } from '@emotion/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [result, setResult] = useState("https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png");
@@ -11,6 +13,12 @@ export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading ] = useState(false);
   const [typedText, setTypedText] = useState("");
   const text ="Create image ... Please wait";
+
+  const stars = [];
+  for(let i = 0; i < 20; i++) {
+    stars.push(<div className="shooting_star" key={i}></div>)
+  }
+
 
   const { publicRuntimeConfig } = getConfig();
   const apiKey = ( typeof publicRuntimeConfig !== 'undefined' && publicRuntimeConfig.apiKey) ? publicRuntimeConfig.apiKey : process.env.API_KEY;
@@ -57,6 +65,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div className="app-main">
+       {stars}
       <h2>Create Image with Your Imagination!</h2>
       <textarea
         className='app-input'
